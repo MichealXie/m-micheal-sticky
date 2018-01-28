@@ -50,7 +50,7 @@ module.exports = merge(common, {
 		new UglifyJsPlugin({
 			uglifyOptions: {
 				compress: {
-					warnings: false
+					warnings: true
 				}
 			},
 			sourceMap: true,
