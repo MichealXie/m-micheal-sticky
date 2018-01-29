@@ -72,7 +72,7 @@ export default{
 	@import './static/css/reset.styl'
   @import '../../static/css/var'
   @import '../../static/css/mixin'
-
+	
 	body
 		height 100vh
 		#app

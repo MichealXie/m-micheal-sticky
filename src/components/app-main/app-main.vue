@@ -19,8 +19,8 @@ export default{
 	data () {
 		return {
 			notes: [],
-			topArr: [168, 168],
-			leftArr : [0,0],
+			topArr: null,
+			leftArr : null,
 			state: 'all',
 			rank: null,
 		}
@@ -64,7 +64,7 @@ export default{
 			})
 		},
 		waterfall(){
-			this.topArr = [168, 168]
+			this.topArr = [68, 68]
 			this.leftArr = [0,0]
 			for(let note of this.$refs['single-note']){
 				let minTop = Math.min(...this.topArr)
@@ -125,7 +125,7 @@ export default{
 		height 100vh
 		.main
 			position relative
-			width 100%
+			width 95%
 			margin 0 auto
 			height 100%
 			padding-top 85px

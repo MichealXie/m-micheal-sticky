@@ -71,10 +71,6 @@ export default{
 		position absolute
 		width 50%
 		box-sizing border-box
-		&:nth-child(odd)
-			padding 1em 1em 0 1em
-		&:nth-child(even)
-			padding 1em 1em 0 0
 		.wrapper
 			background: #FFFFFF
 			border: 1px solid #E6E6E6
