@@ -129,5 +129,12 @@ export default{
 			transition: opacity .5s
 		.fade-enter, .fade-leave-to 
 			opacity: 0
+		@keyframes spin
+			0%{
+				transform: rotate(0deg)
+			} 
+			100% {
+				transform: rotate(359deg)
+			}
 
 </style>

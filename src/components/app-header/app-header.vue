@@ -1,7 +1,7 @@
 <template>
 	<div class="app-header">
 		<div class="header">
-			<div class="btn show-menu" @click="toggleMenu()">
+			<div class="btn show-menu" @click.stop="toggleMenu()">
 				状态<svg class="icon" aria-hidden="true"> <use xlink:href="#icon-down"></use> </svg>
 				<div class="menu" v-show="isMenuShow">
 					<span class="item" :class="{active: state === 'all'}" @click="changeNotes('all')">全部</span>
@@ -13,7 +13,7 @@
 				<span class="creator">Micheal</span>
 				<span class="product">在线便签</span>
 			</div>
-			<div class="btn show-rank" @click="toggleRank()">
+			<div class="btn show-rank" @click.stop="toggleRank()">
 				星级<svg class="icon" aria-hidden="true"> <use xlink:href="#icon-down"></use> </svg>
 				<div class="rank" v-show="isRankShow">
 					<span class="item" :class="{active: rank === null}" @click="selectRank(null)">全部</span>
@@ -39,15 +39,12 @@ export default{
 	methods: {
 		changeNotes(state){
 			this.state = state
-			bus.$emit('changeNotes', state)
 			this.isMenuShow = false
+			bus.$emit('changeNotes', state)
 		},
 		selectRank(rank){
 			this.rank = rank
 			bus.$emit('selectRank', rank)
-			this.isRankShow = false
-			console.log(1);
-			
 		},
 		toggleMenu(){
 			this.isMenuShow = !this.isMenuShow

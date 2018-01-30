@@ -14,12 +14,12 @@ function resolve(dir) {
 module.exports = {
 	entry: {
 		bundle: './src/main.js',
-		vendor: ["axios", "vue", "vue-router", "vuex"]
+		vendor: ["axios", "vue",]
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
 		// chunkhash 在 dev 会出错, prodution 的时候改回来就好
-		publicPath: './', 
+		// publicPath: './', 
 		filename: '[name].[hash].js'
 	},
 	resolve: {

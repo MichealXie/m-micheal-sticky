@@ -3,7 +3,10 @@
 		<div class="header">
 			<div class="close" @click="close()">取消</div>
 			<div class="title">新建便签</div>
-			<div class="post"  @click="postNote()">完成</div>
+			<div class="post"  @click="postNote()">
+				<span v-show="!isPosting" >完成</span>
+				<svg v-show="isPosting"  class="icon" aria-hidden="true"> <use xlink:href="#icon-loading"></use> </svg>
+			</div>
 		</div>
 		<div class="body">
 			<div class="rank">
@@ -24,7 +27,8 @@ export default {
 	data () {
 		return {
 			content: '',
-			rank: 1
+			rank: 1,
+			isPosting: false,
 		}
 	},
 	methods: {
@@ -38,6 +42,9 @@ export default {
 			}
 		},
 		async postNote(){
+			if(this.isPosting) return
+			if(!this.content) return
+			this.isPosting = true
 			let note = {
 				content: this.content,
 				date: new Date().valueOf(),
@@ -52,6 +59,8 @@ export default {
 			bus.$emit('postSuccess', note)
 			// 清空 note
 			this.content = ''
+			this.rank = 1
+			this.isPosting = false
 		},
 		close(){
 			this.$emit('closeNewNote', false)
@@ -106,6 +115,9 @@ export default {
 				height 27px
 				width 42px
 				border-radius: 100px
+				.icon
+					font-size 2.5em
+					animation spin 2s infinite linear
 		.body
 			padding 64px 10px 0 10px
 			background-color #F5F5F5

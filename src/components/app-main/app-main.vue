@@ -4,6 +4,9 @@
 			<transition-group name="fade">
 				<single-note v-for="note in rankedNotes" :note="note" :key="note.date" ref="single-note" v-on:deleteSuccess="deleteSuccess"></single-note>
 			</transition-group>
+			<transition name="fade">
+				<div class="empty" v-show="!rankedNotes.length">空空如也~ 不想新建一个吗?</div>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -122,11 +125,18 @@ export default{
 		overflow scroll 
 		background-color #F5F5F5
 		width 100%
-		height 100vh
+		min-height 100vh
 		.main
 			position relative
-			width 95%
-			margin 0 auto
+			width 98%
 			height 100%
 			padding-top 85px
+			.empty
+				background: #FFFFFF
+				border: 1px solid #E6E6E6
+				border-radius: 4px
+				padding 1em
+				width 50%
+				margin 1em auto 
+				color: #4D4D4D
 </style>
